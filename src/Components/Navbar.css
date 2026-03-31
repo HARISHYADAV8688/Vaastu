@@ -160,8 +160,29 @@
 }
 
 .modalContent p {
-  margin: 15px 0;
+  margin: 10px 0;
+  padding: 14px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #f8f9fa, #f1f3f5);
   cursor: pointer;
+  font-size: 15px;
+  font-weight: 500;
+  border: 1px solid #e0e0e0;
+  transition: all 0.3s ease;
+}
+
+/* Hover (main highlight 🔥) */
+.modalContent p:hover {
+  background: linear-gradient(135deg, #e8f5e9, #d0f0d4);
+  color: #2e7d32;
+  border-color: #2e7d32;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+}
+
+.modalContent p:hover {
+  background: #e8f5e9;
+  color: #2e7d32;
 }
 
 .modalContent p:hover {
@@ -502,4 +523,158 @@
   color: #2e7d32;
   font-weight: bold;
   cursor: pointer;
+}
+
+/* ===== MODAL OVERLAY ===== */
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.4);
+  backdrop-filter: blur(4px);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* ===== APPLY MODAL ===== */
+.modal {
+  background: #ffffff;
+  width: 420px;
+  border-radius: 20px;
+  padding: 25px;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+}
+
+/* Header */
+.modalHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 10px;
+}
+
+.modalHeader h2 {
+  font-size: 22px;
+  font-weight: 600;
+}
+
+/* Close Button */
+.closeBtn {
+  font-size: 24px;
+  font-weight: bold;
+  color: #555;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.closeBtn:hover {
+  color: red;
+  transform: scale(1.2);
+}
+
+/* ===== APPLY OPTIONS (STEP 1 🔥) ===== */
+.modalContent {
+  margin-top: 20px;
+}
+
+.modalContent p {
+  margin: 10px 0;
+  padding: 14px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #f8f9fa, #f1f3f5);
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 500;
+  border: 1px solid #e0e0e0;
+  transition: all 0.3s ease;
+}
+
+.modalContent p:hover {
+  background: linear-gradient(135deg, #e8f5e9, #d0f0d4);
+  color: #2e7d32;
+  border-color: #2e7d32;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+}
+
+/* Active option */
+.modalContent p.active {
+  background: linear-gradient(135deg, #2e7d32, #43a047);
+  color: white;
+}
+
+/* ===== BUILDING PERMISSION MODAL ===== */
+.largeModal {
+  width: 650px;
+  border-radius: 16px;
+  padding: 30px;
+}
+
+/* Title */
+.modalContent h4 {
+  text-align: center;
+  font-size: 18px;
+  margin-bottom: 15px;
+  font-weight: 600;
+}
+
+/* ===== RADIO GROUP (STEP 2 🔥) ===== */
+.radioGroup {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  margin: 25px 0;
+}
+
+/* Hide radio */
+.radioGroup input {
+  display: none;
+}
+
+/* Card style */
+.radioGroup label {
+  padding: 14px 22px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #f8f9fa, #f1f3f5);
+  border: 1px solid #ddd;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+/* Hover */
+.radioGroup label:hover {
+  background: #e8f5e9;
+  color: #2e7d32;
+  transform: translateY(-2px);
+}
+
+/* Selected */
+.radioGroup input:checked + label {
+  background: linear-gradient(135deg, #2e7d32, #43a047);
+  color: white;
+  border-color: #2e7d32;
+}
+
+/* ===== GO BUTTON ===== */
+.goBtn {
+  display: block;
+  margin: 0 auto;
+  background: linear-gradient(135deg, #2e7d32, #43a047);
+  color: white;
+  padding: 12px 28px;
+  border-radius: 10px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.goBtn:hover {
+  transform: scale(1.05);
 }
