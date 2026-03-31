@@ -126,17 +126,33 @@ const Navbar: React.FC<NavbarProps> = ({open,  setOpen, bpOpen, setBpOpen, formO
             <div className="modalContent">
               <h4>Building Permission Type</h4>
 
-              <div className="radioGroup">
-                <label>
-                  <input type="radio" name="type" onChange={() => setType("new")} /> New
-                </label>
-                <label>
-                  <input type="radio" name="type" onChange={() => setType("additional")} /> Additional
-                </label>
-                <label>
-                  <input type="radio" name="type" onChange={() => setType("revision")} /> Revision
-                </label>
-              </div>
+           <div className="radioGroup">
+
+  <input
+    type="radio"
+    id="new"
+    name="type"
+    onChange={() => setType("new")}
+  />
+  <label htmlFor="new">New</label>
+
+  <input
+    type="radio"
+    id="additional"
+    name="type"
+    onChange={() => setType("additional")}
+  />
+  <label htmlFor="additional">Additional</label>
+
+  <input
+    type="radio"
+    id="revision"
+    name="type"
+    onChange={() => setType("revision")}
+  />
+  <label htmlFor="revision">Revision</label>
+
+</div>
 
               <button
                 className="goBtn"
