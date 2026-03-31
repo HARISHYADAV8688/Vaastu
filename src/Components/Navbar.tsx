@@ -594,7 +594,6 @@ onChange={(e) => {
     setFile(selectedFile);
   }
 }}                      />
-
                       <label htmlFor="fileUpload" style={{ cursor: "pointer" }}>
                         📎 Drag & drop files here, or <span>Browse</span>
                       </label>
