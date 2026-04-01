@@ -18,12 +18,17 @@ const HeroCards: React.FC<HeroCardsProps> = ({ setOpen }) => {
   <div className="overlay">
     <h4>Instant Registration</h4>
     <p>
-      Individual Residential Building Permission upto 75 Sq.Yards &
-      upto 7 meters Height
+     Register your individual residential building quickly for plots up to 
+  75 Sq. Yards and up to 7 meters height. No detailed approval process required.
     </p>
   </div>
 
-  <button className="button">Instant Registration</button>
+  <button className="button"
+     onClick={() => {
+      setOpen(true); 
+    }}
+  
+  >Instant Registration</button>
 </div>
 
 <div className="card">
@@ -33,8 +38,8 @@ const HeroCards: React.FC<HeroCardsProps> = ({ setOpen }) => {
   <div className="overlay">
     <h4>Instant Approval</h4>
     <p>
-      Individual Residential Building Permission above 75 Sq.Yards 
-      (63 Sq. Meters) to 500 Sq. Meters & upto 10 meters Height
+   Get instant building approval for individual residential buildings 
+  between 75 Sq. Yards (63 Sq. Meters) and 500 Sq. Meters up to 10 meters height.
     </p>
   </div>
 
@@ -55,12 +60,17 @@ const HeroCards: React.FC<HeroCardsProps> = ({ setOpen }) => {
   <div className="overlay">
     <h4>Single Window</h4>
     <p>
-      All Individual residential buildings above 500 Sq. Meters above 10 meters height. 
-      All Non-residential categories, Master Plan / SRDP / Road widening cases.
+     Apply through single window system for large residential buildings above 
+  500 Sq. Meters or non-residential and special cases requiring detailed approvals.
     </p>
   </div>
 
-  <button className="button">Single Window</button>
+  <button className="button"
+     onClick={() => {
+      setOpen(true); 
+    }}
+  
+  >Single Window</button>
 </div>
 </div>
   );
