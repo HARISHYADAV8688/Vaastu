@@ -102,3 +102,14 @@
   padding: 8px 15px;
   cursor: pointer;
 }
+
+.small-side-image {
+  width: 220px;   /* 👈 same as month */
+  height: 150px;  /* 👈 same as month */
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.building-top-section {
+  margin-top: 10px;
+}

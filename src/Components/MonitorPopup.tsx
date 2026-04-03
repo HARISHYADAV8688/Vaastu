@@ -1,44 +1,70 @@
 import { useState } from "react";
 import "./MonitorPopup.css";
+
 import img1 from "../assets/empty land.webp";
 import img2 from "../assets/feb.jfif";
 import img3 from "../assets/march.png";
-import img4 from "../assets/april.webp"
+import img4 from "../assets/april.webp";
+import mainImg from "../assets/modern-district-aerial-panorama-urban-style (1).jpg";
+
+import img21 from "../assets/building2-1.webp";
+import img23 from "../assets/Image2-3.jfif";
+
+import img31 from "../assets/building3-1.webp";
+import img41 from "../assets/building4-1.jfif";
+
+// 🔥 TYPES
+type Building = {
+  id: number;
+  name: string;
+    img: string; // 🔥 add this
+};
+
+type BuildingItem = {
+  label: string;
+  img: string;
+  status: "clear" | "violation";
+};
 
 // 🔥 BUILDINGS
-const buildings = [
-  { id: 1, name: "Building 1", percent: "100%" },
-  { id: 2, name: "Building 2", percent: "75%" },
-  { id: 3, name: "Building 3", percent: "50%" },
-  { id: 4, name: "Building 4", percent: "25%" },
+// const buildings: Building[] = [
+//   { id: 1, name: "Building 1" },
+//   { id: 2, name: "Building 2" },
+//   { id: 3, name: "Building 3" },
+//   { id: 4, name: "Building 4" },
+// ];
+
+const buildings: Building[] = [
+  { id: 1, name: "Building 1", img: mainImg },
+  { id: 2, name: "Building 2", img: img23 },
+  { id: 3, name: "Building 3", img: img2 },
+  { id: 4, name: "Building 4", img: img41 },
 ];
 
-// 🔥 MONTHLY DATA (SAME FOR ALL BUILDINGS DEMO)
-const monthsData = [
-  {
-    month: "January",
-    img: img1,
-    status: "clear",
-  },
-  {
-    month: "February",
-     img: img2,
-    status: "clear",
-  },
-  {
-    month: "March",
-    img: img3,
-    status: "violation", // 🔴 only here alert
-  },
-  {
-    month: "April",
-    img: img4,
-    status: "clear",
-  },
-];
+// 🔥 ALL BUILDING DATA
+const buildingDataMap: Record<number, BuildingItem[]> = {
+  1: [
+    { label: "Stage 1", img: img1, status: "clear" },
+    { label: "Stage 2", img: img2, status: "clear" },
+    { label: "Stage 3", img: img3, status: "violation" },
+    { label: "Stage 4", img: img4, status: "clear" },
+  ],
+  2: [
+    { label: "Stage 1", img: img21, status: "clear" },
+    { label: "Stage 2", img: img2, status: "clear" },
+    { label: "Stage 3", img: img23, status: "violation" },
+  ],
+  3: [
+    { label: "Phase 1", img: img31, status: "clear" },
+    { label: "Phase 2", img: img2, status: "violation" },
+  ],
+  4: [
+    { label: "Only Stage", img: img41, status: "clear" },
+  ],
+};
 
-const MonitorPopup = ({ setBpOpen }: any) => {
-  const [selectedBuilding, setSelectedBuilding] = useState<any>(null);
+const MonitorPopup = ({ setBpOpen }: { setBpOpen: (val: boolean) => void }) => {
+  const [selectedBuilding, setSelectedBuilding] = useState<Building | null>(null);
 
   return (
     <div className="popup">
@@ -60,42 +86,41 @@ const MonitorPopup = ({ setBpOpen }: any) => {
                   onClick={() => setSelectedBuilding(b)}
                 >
                   <h3>{b.name}</h3>
-                  <p>{b.percent}</p>
                 </div>
               ))}
             </div>
           </>
         )}
 
-        {/* ================= MONTHLY VIEW ================= */}
-       {selectedBuilding && selectedBuilding.id === 1 && (
+        {/* ================= DYNAMIC BUILDING VIEW ================= */}
+        {selectedBuilding && (
           <>
-            <h2>
-              {selectedBuilding.name} - {selectedBuilding.percent}
-            </h2>
+            <h2>{selectedBuilding.name}</h2>
 
+            {/* 🔥 Small left image */}
+            <div className="building-top-section">
+           <img src={selectedBuilding.img} alt="Building" className="small-side-image" />
+            </div>
+
+            {/* 🔥 Dynamic Cards */}
             <div className="timeline-months">
-              {monthsData.map((m, index) => (
-                <div key={index} className="month-card">
+              {buildingDataMap[selectedBuilding.id]?.map(
+                (item: BuildingItem, index: number) => (
+                  <div key={index} className="month-card">
+                    <h4>{item.label}</h4>
 
-                  <h4>{m.month}</h4>
+                    <div className="image-box">
+                      <img src={item.img} alt="" />
 
-                  <div className="image-box">
-                    <img src={m.img} alt="" />
-
-                    {/* 🔴 SHOW ONLY IF VIOLATION */}
-                    {m.status === "violation" && (
-                      <>
-                        <div className="highlight-box"></div>
-                        <div className="alert-box">
-                          🚨 Construction outside boundary
-                        </div>
-                      </>
-                    )}
+                  {item.status === "violation" && selectedBuilding.id === 1 && (
+  <div className="alert-box">
+    🚨 Construction outside boundary
+  </div>
+)}
+                    </div>
                   </div>
-
-                </div>
-              ))}
+                )
+              )}
             </div>
 
             <button
@@ -106,24 +131,6 @@ const MonitorPopup = ({ setBpOpen }: any) => {
             </button>
           </>
         )}
-        {selectedBuilding && selectedBuilding.id !== 1 && (
-  <>
-    <h2>
-      {selectedBuilding.name} - {selectedBuilding.percent}
-    </h2>
-
-    <p style={{ marginTop: "20px" }}>
-      🚧 Progress data not available for this building
-    </p>
-
-    <button
-      className="back-btn"
-      onClick={() => setSelectedBuilding(null)}
-    >
-      ⬅ Back
-    </button>
-  </>
-)}
 
       </div>
     </div>
