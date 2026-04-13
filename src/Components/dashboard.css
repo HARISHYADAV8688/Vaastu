@@ -1,0 +1,169 @@
+/* ===== ADMIN LAYOUT ONLY ===== */
+.admin-dashboard {
+  display: flex;
+  min-height: 100vh;
+  font-family: Arial, sans-serif;
+}
+
+/* ===== SIDEBAR ===== */
+.admin-dashboard .sidebar {
+  width: 220px;
+  background: #1e293b;
+  color: white;
+  padding: 20px;
+}
+
+.admin-dashboard .sidebar h2 {
+  margin-bottom: 20px;
+}
+
+.admin-dashboard .sidebar ul {
+  padding: 0;
+}
+
+.admin-dashboard .sidebar li {
+  list-style: none;
+  margin: 10px 0;
+  cursor: pointer;
+}
+
+/* ===== MAIN ===== */
+.admin-dashboard .main {
+  flex: 1;
+  padding: 20px;
+  background: #f1f5f9;
+}
+
+/* ===== HEADER ===== */
+.admin-dashboard .header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.admin-dashboard .header button {
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+/* ===== CARDS ===== */
+.admin-dashboard .cards {
+  display: flex;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.admin-dashboard .card {
+  flex: 1;
+  padding: 20px;
+  border-radius: 12px;
+  color: white;
+  font-weight: bold;
+}
+
+.admin-dashboard .green {
+  background: #16a34a;
+}
+
+.admin-dashboard .yellow {
+  background: #f59e0b;
+}
+
+.admin-dashboard .red {
+  background: #dc2626;
+}
+
+/* ===== MAP ===== */
+.admin-dashboard .map {
+  margin-top: 20px;
+}
+
+/* ===== TABLE ===== */
+.admin-dashboard table {
+  width: 100%;
+  margin-top: 20px;
+  border-collapse: collapse;
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.admin-dashboard th {
+  background: #1e293b;
+  color: white;
+}
+
+.admin-dashboard td,
+.admin-dashboard th {
+  padding: 12px;
+  border: 1px solid #ddd;
+}
+
+.admin-dashboard button {
+  margin-right: 5px;
+  padding: 6px 10px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.admin-dashboard button:first-child {
+  background: green;
+  color: white;
+}
+
+.admin-dashboard button:last-child {
+  background: red;
+  color: white;
+}
+
+/* ===== UPLOAD ===== */
+.admin-dashboard input[type="file"] {
+  margin-top: 10px;
+}
+
+.admin-dashboard button {
+  margin-top: 10px;
+}
+
+/* ===== MOBILE RESPONSIVE ===== */
+@media (max-width: 768px) {
+
+  .admin-dashboard {
+    flex-direction: column;
+  }
+
+  .admin-dashboard .sidebar {
+    width: 100%;
+    text-align: center;
+  }
+
+  .admin-dashboard .sidebar ul {
+    display: flex;
+    justify-content: space-around;
+  }
+
+  .admin-dashboard .sidebar li {
+    margin: 0;
+    font-size: 14px;
+  }
+
+  .admin-dashboard .cards {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .admin-dashboard .card {
+    width: 100%;
+  }
+
+  .admin-dashboard .map {
+    width: 100%;
+  }
+
+  .admin-dashboard table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+}

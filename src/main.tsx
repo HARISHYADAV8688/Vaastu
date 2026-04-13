@@ -1,15 +1,13 @@
 import React from "react";
-import { createRoot } from "react-dom/client";
-import App from "./App";
-
 import "leaflet/dist/leaflet.css";
+import ReactDOM from "react-dom/client";
+import App from "./App";
+import { BrowserRouter } from "react-router-dom";
 
-const root = document.getElementById("root");
-
-if (root) {
-  createRoot(root).render(
-    <React.StrictMode>
+ReactDOM.createRoot(document.getElementById("root")!).render(
+  <React.StrictMode>
+    <BrowserRouter>
       <App />
-    </React.StrictMode>
-  );
-}
+    </BrowserRouter>
+  </React.StrictMode>
+);
