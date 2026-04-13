@@ -5,6 +5,7 @@ import "./Navbar.css";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import type { LatLngExpression } from "leaflet";
+import { useNavigate } from "react-router-dom";
 
 
 const MapComponent = () => {
@@ -51,6 +52,8 @@ const Navbar: React.FC<NavbarProps> = ({ open, setOpen, bpOpen, setBpOpen, formO
   const [landType, setLandType] = useState("");
   const [cadFiles, setCadFiles] = useState<File[]>([]);
   const [result, setResult] = useState<"success" | "failure" | "">("");
+  const navigate = useNavigate();
+
 
 
 const validateBuilding = () => {
@@ -119,10 +122,17 @@ useEffect(() => {
           <button className="navBtn">COMPLAINTS ▼</button>
           <button className="navBtn">LOGIN ▼</button>
         </div>
-
+<div className="rightButtons">
         <button className="applyBtn" onClick={() => setOpen(true)}>
           APPLY NOW ▼
         </button>
+        <button
+  onClick={() => navigate("/admin")}
+  className="bg-blue-500 text-white px-4 py-2 rounded"
+>
+  Admin
+</button>
+</div>
       </div>
 
       <hr />
