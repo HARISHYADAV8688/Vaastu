@@ -5,6 +5,7 @@ import MapView from "../Components/MapView";
 import ApplicationsTable from "../Components/ApplicationsTable";
 const AdminDashboard = () => {
   const navigate = useNavigate();
+  const [open, setOpen] = useState(false);
 const [file, setFile] = useState<File | null>(null);
 const [result, setResult] = useState<string | null>(null);
 
@@ -63,7 +64,7 @@ const handleUpload = () => {
    <div className="admin-dashboard">
       
       {/* Sidebar */}
-      <aside className="sidebar">
+     <aside className={`sidebar ${open ? "active" : ""}`}>
         <h2>VAASTU</h2>
         <ul>
           <li>Dashboard</li>
@@ -75,10 +76,15 @@ const handleUpload = () => {
 
       {/* Main Content */}
       <main className="main">
-        <header className="header">
-          <button onClick={() => navigate("/Home")}>⬅ Back</button>
-          <h1>Admin Dashboard</h1>
-        </header>
+     <header className="header">
+  <button className="menu-btn" onClick={() => setOpen(!open)}>☰</button>
+
+<button className="back-btn" onClick={() => navigate("/Home")}>
+  ⬅ Back
+</button>
+
+  <h1>Admin Dashboard</h1>
+</header>
 
         {/* Cards */}
      <div className="cards">
@@ -106,6 +112,7 @@ const handleUpload = () => {
 <div style={{ marginTop: "20px" }}>
   <h3>Upload Building Plan</h3>
 
+<div className="upload-row">
   <input
     type="file"
     accept=".pdf"
@@ -116,7 +123,10 @@ const handleUpload = () => {
     }}
   />
 
-  <button onClick={handleUpload}>Upload</button>
+  <button className="upload-btn" onClick={handleUpload}>
+    Upload
+  </button>
+</div>
   {result && (
   <div
     style={{
