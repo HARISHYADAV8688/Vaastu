@@ -102,15 +102,39 @@
   cursor: pointer;
 }
 
-.admin-dashboard button:first-child {
+/* APPROVE BUTTON */
+.approve-btn {
   background: green;
   color: white;
 }
 
-.admin-dashboard button:last-child {
+/* REJECT BUTTON */
+.reject-btn {
   background: red;
   color: white;
 }
+
+/* BACK BUTTON */
+.back-btn {
+  background: green;
+  color: white;
+}
+
+/* MENU BUTTON */
+.menu-btn {
+  background: #1e293b;
+  color: white;
+}
+/* UPLOAD BUTTON FIX */
+.upload-btn {
+  background: #2563eb;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 6px;
+  width: auto;        /* IMPORTANT */
+  display: inline-block;
+}
+
 
 /* ===== MOBILE FIX ===== */
 @media (max-width: 768px) {
@@ -194,7 +218,24 @@
 
 /* ===== MOBILE PERFECT WIDTH FIX ===== */
 @media (max-width: 768px) {
+    
+.upload-btn {
+  width: auto !important;
+  padding: 6px 14px;
+  font-size: 14px;
+  display: block;
+  margin: 10px auto;
+}
+/* MOBILE FILE + BUTTON INLINE */
+.upload-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
 
+.upload-btn {
+  margin: 0;   /* remove center margin */
+}
   .admin-dashboard .main {
     width: 100%;
     padding: 10px;
@@ -210,4 +251,263 @@
     margin: 0;
   }
 
+}
+
+/* ===== MENU BUTTON ===== */
+.menu-btn {
+  display: none;
+  font-size: 20px;
+  background: #1e293b;
+  color: white;
+  padding: 6px 10px;
+  border-radius: 6px;
+}
+
+/* ===== MOBILE SIDEBAR ===== */
+@media (max-width: 768px) {
+
+  .menu-btn {
+    display: block;
+  }
+
+  .admin-dashboard .sidebar {
+    position: fixed;
+    top: 0;
+    left: -100%;
+    height: 100%;
+    width: 200px;
+    z-index: 1000;
+    transition: 0.3s;
+  }
+
+  .admin-dashboard .sidebar.active {
+    left: 0;
+  }
+}
+
+/* BACK BUTTON FIX */
+.back-btn {
+  background: green;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 6px;
+}
+
+.approve-btn,
+.reject-btn {
+  padding: 6px 10px;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.approve-btn {
+  background: green;
+  color: white;
+}
+
+.reject-btn {
+  background: red;
+  color: white;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 8px;
+    justify-content: center; /* 🔥 center */
+}
+
+/* VIEW */
+.view-btn {
+  background: #2563eb;
+  color: white;
+}
+
+/* EDIT */
+.edit-btn {
+  background: #9333ea;
+  color: white;
+}
+
+/* COMMON */
+.view-btn,
+.edit-btn {
+  padding: 6px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+
+/* ACTION BUTTONS ALIGNMENT (DESKTOP) */
+.action-buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center; /* center lo align */
+  gap: 12px; /* equal spacing */
+}
+
+/* buttons size equal */
+.action-buttons button {
+  width: 30px;
+  height: 30px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+}
+
+
+/* ===== MODERN TABLE DESIGN ===== */
+.admin-dashboard table {
+  width: 100%;
+  margin-top: 20px;
+  border-collapse: separate;
+  border-spacing: 0;
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+/* HEADER */
+.admin-dashboard th {
+  background: #1e293b;
+  color: white;
+  padding: 14px;
+  text-align: left;
+  font-weight: 600;
+}
+
+/* ROWS */
+.admin-dashboard td {
+  padding: 14px;
+  border-bottom: 1px solid #eee;
+}
+
+/* HOVER EFFECT */
+.admin-dashboard tbody tr:hover {
+  background: #f8fafc;
+  transition: 0.2s;
+}
+
+/* LAST ROW REMOVE BORDER */
+.admin-dashboard tr:last-child td {
+  border-bottom: none;
+}
+
+
+
+/* STATUS BADGES */
+.status {
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.status.approved {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.status.pending {
+  background: #fef9c3;
+  color: #854d0e;
+}
+
+.status.violation {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+
+
+/* SEARCH */
+.search-input {
+  margin: 10px 0;
+  padding: 8px;
+  width: 250px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+/* PAGINATION */
+.pagination {
+  margin-top: 15px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+/* MODAL */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+   z-index: 9999; /* VERY IMPORTANT */
+}
+
+.modal {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  width: 300px;
+}
+
+
+
+/* TABLE SECTION CARD */
+.table-section {
+  margin-top: 40px; /* upload nundi gap */
+  padding: 20px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.modal input,
+.modal select {
+  width: 100%;
+  margin-top: 10px;
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.modal button {
+  margin-top: 10px;
+}
+
+/* MOBILE TABLE SCROLL FIX */
+.table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+}
+
+/* 👇 main fix */
+.table-wrapper table {
+  width: max-content;   /* 🔥 key line */
+  min-width: 100%;
+}
+
+/* Action column center */
+.admin-dashboard td:last-child,
+.admin-dashboard th:last-child {
+  text-align: center;
+}
+
+
+
+
+/* ALL TABLE TEXT CENTER */
+.admin-dashboard th,
+.admin-dashboard td {
+  text-align: center;
+  vertical-align: middle;
 }
