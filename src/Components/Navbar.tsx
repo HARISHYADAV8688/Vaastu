@@ -147,7 +147,7 @@ useEffect(() => {
       )}
 
       {/* 🔥 HOME lo unte only ADMIN chupinchu */}
-      {location.pathname === "/Home" && (
+      {(location.pathname === "/" || location.pathname === "/Home") && (
         <p
           onClick={() => {
             navigate("/admin");
