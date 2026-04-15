@@ -1,16 +1,14 @@
 import "./dashboard.css";
-// import { useNavigate } from "react-router-dom";
 import { useState,  } from "react";
-import MapView from "../Components/MapView";
-import ApplicationsTable from "../Components/ApplicationsTable";
+
 import AdminTopBar from "./AdminTopBar";
+import AIUpload from "./AIUpload";
+import GISMonitoring from "./GISMonitoring";
+import GovernanceDashboard from "./GovernanceDashboard";
 const AdminDashboard = () => {
-  // const navigate = useNavigate();
   const [open, setOpen] = useState(false);
-const [file, setFile] = useState<File | null>(null);
-const [result, setResult] = useState<"success" | "failure" | "">("");
-const [message, setMessage] = useState("");
-const [loading, setLoading] = useState(false);
+
+const [activePage, setActivePage] = useState("dashboard");
 
 const [applications, setApplications] = useState([
   { id: 101, name: "Ramesh", status: "Pending", lat: 17.385, lng: 78.4867 },
@@ -41,35 +39,7 @@ const handleReject = (id: number) => {
   );
 };
 
-const handleUpload = () => {
-  if (!file) {
-    setResult("failure");
-    setMessage("Please select a file");
-    return;
-  }
 
-  if (file.size > 2 * 1024 * 1024) {
-    setResult("failure");
-    setMessage("File too large (max 2MB)");
-    return;
-  }
-
-  setLoading(true); // 🔥 START LOADER
-
-  setTimeout(() => {
-    const fileName = file.name.toLowerCase();
-
-    if (fileName.includes("2006") || fileName.includes("plan")) {
-      setResult("success");
-      setMessage("Plan Approved");
-    } else {
-      setResult("failure");
-      setMessage("Plan Rejected");
-    }
-
-    setLoading(false); // 🔥 STOP LOADER
-  }, 1000); // 2 sec delay
-};
 
 
   return (
@@ -77,127 +47,78 @@ const handleUpload = () => {
         <AdminTopBar />
    <div className="admin-dashboard">
       
-  
+  <div className={`sidebar ${open ? "active" : ""}`}>
+  <h2>Admin</h2>
+
+  <ul>
+    <li onClick={() => setActivePage("dashboard")}>
+  🏠 Dashboard
+</li>
+
+<li onClick={() => setActivePage("ai")}>
+  🤖 AI-Assisted Automated Scrutiny
+</li>
+<li onClick={() => setActivePage("gis")}>
+  🛰 GIS & Satellite Monitoring
+</li>
+<li onClick={() => setActivePage("governance")}>
+  🏛 Governance Dashboard
+</li>
+  </ul>
+</div>
 
       {/* Main Content */}
-      <main className="main">
-     <header className="header">
-  <button className="menu-btn" onClick={() => setOpen(!open)}>☰</button>
+   <main className="main">
 
-{/* <button className="back-btn" onClick={() => navigate("/Home")}>
-  ⬅ Back
-</button> */}
+  <header className="header">
+    <button className="menu-btn" onClick={() => setOpen(!open)}>☰</button>
+  </header>
 
-  {/* <h1>Admin Dashboard</h1> */}
-</header>
-
-        {/* Cards */}
-     <div className="cards">
-          <div className="card green">
-            <h3>Approved</h3>
-           <p>{stats.approved}</p>
-          </div>
-
-          <div className="card yellow">
-            <h3>Pending</h3>
-        <p>{stats.pending}</p>
-          </div>
-
-          <div className="card red">
-            <h3>Violations</h3>
-         <p>{stats.violations}</p>
-          </div>
+  {/* DASHBOARD VIEW */}
+  {activePage === "dashboard" && (
+    <>
+      <div className="cards">
+        <div className="card green">
+          <h3>Approved</h3>
+          <p>{stats.approved}</p>
         </div>
 
-        {/* Map */}
-        <div className="map">
-          <h3>Map View</h3>
-  <MapView data={applications} onAdd={handleAddApplication} />
+        <div className="card yellow">
+          <h3>Pending</h3>
+          <p>{stats.pending}</p>
         </div>
 
+        <div className="card red">
+          <h3>Violations</h3>
+          <p>{stats.violations}</p>
+        </div>
+      </div>
 
-<div className="upload-section">
-<div style={{ marginTop: "20px" }}>
-  <h3>Upload Building Plan</h3>
+     
 
-<div className="upload-row">
-  <input
-    type="file"
-    accept=".pdf"
-    onChange={(e) => {
-      if (e.target.files) {
-        setFile(e.target.files[0]);
-      }
-    }}
+  
+    </>
+  )}
+
+  {/* AI PAGE */}
+  {activePage === "ai" && <AIUpload />}
+
+  {activePage === "gis" && (
+  <GISMonitoring
+    applications={applications}
+    onApprove={handleApprove}
+    onReject={handleReject}
   />
-
-  <button className="upload-btn" onClick={handleUpload}>
-    Upload
-  </button>
-</div>
-
-{/* 👇 IDHI IMPORTANT – upload row kinda */}
-{loading && (
-  <div className="loader-container">
-    <div className="spinner"></div>
-    <p>Uploading...</p>
-  </div>
+  
+)}
+{activePage === "governance" && (
+  <GovernanceDashboard
+    applications={applications}
+    onAdd={handleAddApplication}
+  />
 )}
 
-  {/* 🔥 STEP 3 CODE EXACT IKKADE */}
- {!loading && result !== "" && (
-    <div
-      style={{
-        marginTop: "10px",
-        padding: "10px",
-        background: "#f1f5f9",
-        borderRadius: "8px",
-        fontWeight: "bold",
-      }}
-    >
-      <span style={{ color: result === "success" ? "green" : "red" }}>
-        {result === "success" ? "✅" : "❌"} {message}
-      </span>
-
-   <button
-  style={{
-    marginLeft: "10px",
-    padding: "6px 12px",
-    background: "#2e7d32",
-    color: "white",
-    border: "none",
-    borderRadius: "6px",
-    cursor: "pointer",
-  }}
-  onClick={() => {
-    const link = document.createElement("a");
-
-    if (result === "success") {
-      link.href = "/AP-VAASTU-20260327062006 - VAASTU.pdf";
-      link.download = "approved.pdf";
-    } else {
-      link.href = "/AP-VAASTU-20260327062016 - VAASTU.pdf";
-      link.download = "rejected.pdf";
-    }
-
-    link.click();
-  }}
->
-  ⬇ Download
-</button>
-    </div>
-  )}
-</div>
-</div>
-
-        {/* Table */}
-    <ApplicationsTable
-  data={applications}
-  onApprove={handleApprove}
-  onReject={handleReject}
-/>
-
-      </main>
+</main>
     </div>
     </div>
   );
