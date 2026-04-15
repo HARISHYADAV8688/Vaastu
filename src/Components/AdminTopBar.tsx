@@ -32,9 +32,9 @@ const AdminTopBar = () => {
       {/* MENU BAR */}
       <div className="admin-menu-bar">
         <div className="admin-menu-left">
-          <span className="admin-home-icon" onClick={() => navigate("/Home")}>
-            🏠
-          </span>
+             <div className="homeWrapper">
+          <span className="admin-home-icon" onClick={() => navigate("/Home")}>🏠</span>
+          </div>
           <div className="icons1">
             <button className="admin-menu-item">Dashboard ▼</button>
             <button className="admin-menu-item">Applications ▼</button>
