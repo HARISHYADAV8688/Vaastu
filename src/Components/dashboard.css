@@ -699,3 +699,28 @@ margin-left: 140px;
     transform: rotate(360deg);
   }
 }
+
+
+/* ===== SIDEBAR MENU ITEMS ===== */
+.menu-item {
+  padding: 10px 12px;
+  border-radius: 8px;
+  transition: 0.3s;
+  font-size: 14px;
+}
+
+/* hover */
+.menu-item:hover {
+  background: #334155;
+}
+
+/* active */
+.menu-item.active {
+  background: #2563eb;
+  font-weight: 600;
+}
+.admin-dashboard .sidebar h2 {
+  margin-bottom: 25px;
+  font-size: 20px;
+  font-weight: 600;
+}
