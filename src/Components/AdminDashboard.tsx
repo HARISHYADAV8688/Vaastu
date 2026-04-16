@@ -49,7 +49,6 @@ const handleReject = (id: number) => {
    <div className="admin-dashboard">
       
   <div className={`sidebar ${open ? "active" : ""}`}>
-  <h2>Admin</h2>
 
   <ul>
     <li onClick={() => {setActivePage("dashboard"); setOpen(false);}  }  className="menu-item">
