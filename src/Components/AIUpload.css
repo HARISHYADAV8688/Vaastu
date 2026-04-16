@@ -289,3 +289,57 @@
 .download-btn:active {
   transform: scale(0.97);
 }
+
+/* ===== Mobile Responsive ===== */
+@media (max-width: 768px) {
+
+  /* Section padding */
+  .upload-section {
+    padding: 14px;
+  }
+
+  /* Upload box */
+  .upload-box {
+    gap: 10px;
+  }
+
+  /* Upload card */
+  .file-label {
+    padding: 18px;
+  }
+
+  .upload-text {
+    font-size: 13px;
+    text-align: center;
+  }
+
+  /* Button full width */
+  .upload-btn {
+    width: 100%;
+    padding: 12px;
+    font-size: 14px;
+  }
+
+  /* Progress text */
+  .progress-container p {
+    font-size: 13px;
+  }
+
+  /* RESULT CARD STACK */
+  .result-card {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  /* Left section full width */
+  .result-left {
+    width: 100%;
+  }
+
+  /* Download button full width */
+  .download-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
