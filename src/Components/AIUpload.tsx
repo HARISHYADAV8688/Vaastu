@@ -87,7 +87,7 @@ const AIUpload = () => {
             <p className="upload-text">
               {file ? file.name : "Click to upload or drag & drop"}
             </p>
-            <span className="upload-subtext">PDF (Max 2MB)</span>
+            <span className="upload-subtext">CAD File (Max 20MB)</span>
           </div>
         </label>
 
