@@ -5,6 +5,7 @@ import AdminTopBar from "./AdminTopBar";
 import AIUpload from "./AIUpload";
 import GISMonitoring from "./GISMonitoring";
 import GovernanceDashboard from "./GovernanceDashboard";
+import Dashboard from "./pages/Dashboard";
 const AdminDashboard = () => {
   const [open, setOpen] = useState(false);
 
@@ -18,11 +19,11 @@ const [applications, setApplications] = useState([
 const handleAddApplication = (newApp: any) => {
   setApplications((prev) => [...prev, newApp]);
 };
-const stats = {
-  approved: applications.filter((a) => a.status === "Approved").length,
-  pending: applications.filter((a) => a.status === "Pending").length,
-  violations: applications.filter((a) => a.status === "Violation").length,
-};
+// const stats = {
+//   approved: applications.filter((a) => a.status === "Approved").length,
+//   pending: applications.filter((a) => a.status === "Pending").length,
+//   violations: applications.filter((a) => a.status === "Violation").length,
+// };
 const handleApprove = (id: number) => {
   setApplications((prev) =>
     prev.map((app) =>
@@ -74,9 +75,10 @@ const handleReject = (id: number) => {
   <header className="header">
     <button className="menu-btn" onClick={() => setOpen(!open)}>☰</button>
   </header>
+  {activePage === "dashboard" && <Dashboard />}
 
   {/* DASHBOARD VIEW */}
-  {activePage === "dashboard" && (
+  {/* {activePage === "dashboard" && (
     <>
       <div className="cards">
         <div className="card green">
@@ -93,13 +95,13 @@ const handleReject = (id: number) => {
           <h3>Violations</h3>
           <p>{stats.violations}</p>
         </div>
-      </div>
+      </div> */}
 
      
 
   
-    </>
-  )}
+    {/* </> */}
+  {/* )} */}
 
   {/* AI PAGE */}
   {activePage === "ai" && <AIUpload />}
