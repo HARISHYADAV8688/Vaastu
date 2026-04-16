@@ -128,8 +128,18 @@
   font-size: 12px;
   margin-top: 10px;
   text-align: center;
+  /* margin-left: 32px; */
+  /* gap: 28px; */
 }
-
+.ML1{
+  margin-left: 35px;
+}
+.BL1{
+  margin-left: 32px;
+}
+.BL2{
+  margin-left: 30px;
+}
 /* ===== DONUT ===== */
 .db-donut {
   width: 180px;
