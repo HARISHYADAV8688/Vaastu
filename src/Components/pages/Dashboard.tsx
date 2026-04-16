@@ -80,9 +80,9 @@ const Dashboard: React.FC = () => {
 
   {/* X LABELS */}
   <div className="db-x-labels">
-    <span>Multi-Level </span>
-    <span>Deadline-Based </span>
-    <span>Deadline-Based </span>
+    <span className="ML1">Multi-Level </span>
+    <span className="BL1">Deadline-Based </span>
+    <span className="BL2">Deadline-Based </span>
   </div>
 </div>
 
