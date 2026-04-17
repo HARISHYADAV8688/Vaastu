@@ -1,4 +1,4 @@
-import "./dashboard.css";
+import "./AdminDashboard.css";
 import { useState,  } from "react";
 
 import AIUpload from "./AIUpload";
