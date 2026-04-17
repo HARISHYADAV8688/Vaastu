@@ -45,8 +45,6 @@ const Navbar: React.FC<NavbarProps> = ({
 }) => {
   const [type, setType] = useState("");
   const [step, setStep] = useState(1);
-  const [file, setFile] = useState<File | null>(null);
-
   const [floors, setFloors] = useState("");
   const [area, setArea] = useState("");
   const [height, setHeight] = useState("");
