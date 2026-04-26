@@ -213,6 +213,7 @@ const Navbar: React.FC<NavbarProps> = ({
             <div className="modalHeader">
               <h2>Apply For</h2>
 
+
               <span
                 className="closeBtn"
             onClick={() => setApplyOpen(false)}
