@@ -3,13 +3,13 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "scripts": {
+ "scripts": {
     "dev": "vite",
-    "frontend": "npm run dev",
-    "backend": "cd backend && python app.py",
-    "dev:full": "concurrently \"npm run backend\" \"npm run frontend\"",
+    "dev:backend": "nodemon --watch backend --ext py --exec \"python backend/app.py\"",
+    "dev:full": "concurrently -k -n REACT,FLASK -c green,blue \"npm run dev\" \"npm run dev:backend\"",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "prod": "npm run build && python backend/app.py"
   },
   "dependencies": {
     "@react-google-maps/api": "^2.20.8",

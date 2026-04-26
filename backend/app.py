@@ -4,7 +4,13 @@ from werkzeug.utils import secure_filename
 from config import Config
 import os
 import uuid
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
+app = Flask(
+    __name__,
+    static_folder=os.path.join(BASE_DIR, "static"),
+    static_url_path=""
+)
 app = Flask(
     __name__,
     static_folder="static",
@@ -176,7 +182,6 @@ def serve_react(path):
     if os.path.exists(file_path):
         return send_from_directory(app.static_folder, path)
     return send_from_directory(app.static_folder, "index.html")
-
 
 # ── Error Handlers ────────────────────────────────────────────────────────────
 
