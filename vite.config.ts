@@ -1,7 +1,10 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
+import path from "path";
 
 export default defineConfig({
+  root: "frontend",
+
   plugins: [react()],
 
   server: {
@@ -9,7 +12,6 @@ export default defineConfig({
     port: 5173,
     strictPort: true,
     open: true,
-
     proxy: {
       "/api": {
         target: "http://localhost:5000",
@@ -19,16 +21,15 @@ export default defineConfig({
     },
   },
 
-  preview: {
-    host: "0.0.0.0",
-    port: 4173,
-    strictPort: true,
-  },
-
   build: {
-    outDir: "../backend/static",
+    outDir: "backend/static",
     emptyOutDir: true,
     sourcemap: false,
-    chunkSizeWarningLimit: 1000,
+  },
+
+  resolve: {
+    alias: {
+      "@": path.resolve(__dirname, "frontend/src"),
+    },
   },
 });
