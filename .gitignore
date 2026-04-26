@@ -12,9 +12,6 @@ node_modules
 dist
 dist-ssr
 
-# React build copied to Flask
-backend/static
-
 # Python
 __pycache__/
 *.py[cod]
@@ -24,10 +21,16 @@ venv/
 env/
 .venv/
 
-# Flask DB / uploads
+# Flask database
 backend/*.db
+
+# Uploads (keep folder only)
 backend/uploads/*
 !backend/uploads/.gitkeep
+
+# Static build files (keep folder only)
+backend/static/*
+!backend/static/.gitkeep
 
 # Environment
 .env
@@ -49,4 +52,3 @@ lerna-lock.yaml
 *.njsproj
 *.sln
 *.sw?
-static
