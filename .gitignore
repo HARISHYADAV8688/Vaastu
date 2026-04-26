@@ -7,15 +7,39 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
+# Node
 node_modules
 dist
 dist-ssr
+
+# React build copied to Flask
+backend/static
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+venv/
+env/
+.venv/
+
+# Flask DB / uploads
+backend/*.db
+backend/uploads/*
+!backend/uploads/.gitkeep
+
+# Environment
+.env
 *.local
+
+# Lock files
 package-lock.json
 yarn.lock
 pnpm-lock.yaml
 lerna-lock.yaml
-# Editor directories and files
+
+# IDE / OS
 .vscode/*
 !.vscode/extensions.json
 .idea
@@ -25,3 +49,4 @@ lerna-lock.yaml
 *.njsproj
 *.sln
 *.sw?
+static
